@@ -24,7 +24,7 @@ shinyServer(function(input, output) {
     p <- p + l
     if(input$density){
       d <- geom_density(data = data$data, kernel = "gaussian", col = "red", lwd = 1.2)
-      p <- p +d 
+      p <- p + d 
     }
     p
   })
