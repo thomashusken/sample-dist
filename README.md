@@ -1,1 +1,1 @@
-App can be found on: https://thomashusken.shinyapps.io/sample_dist/
+App can be found on: https://thomashusken.shinyapps.io/sample-dist/
