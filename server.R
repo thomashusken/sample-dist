@@ -12,12 +12,12 @@ shinyServer(function(input, output) {
   )
   
   observeEvent(input$reset, {
-    data$data      <- data.frame(x = rnorm(input$n, input$mu, sd = input$sigma))
-    mean$mean      <- data.frame(m = mean(data$data$x))
+    data$data      <- data.frame(x = NaN)
+    mean$mean      <- data.frame(m = NaN)
   })
   
   output$hist <- renderPlot({
-    bw <- diff(range(data$data$x)) / (2 * IQR(data$data$x) * length(data$data$x)^(1/3))
+    bw <- diff(range(data$data$x)) / (2 * IQR(data$data$x, na.rm = TRUE) * length(data$data$x)^(1/3))
     p <- ggplot(data = data$data, aes(x = x, y = ..density..)) + geom_histogram(binwidth = bw) + theme_bw() +
       scale_x_continuous(limits = c(-5*input$sigma, 5*input$sigma)) + scale_y_continuous(limits=c(0,1))
     l <- geom_vline(xintercept = mean(data$data$x), col = "red")
